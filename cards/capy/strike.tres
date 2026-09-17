@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Card" format=3 uid="uid://btcr46f00wf6i"]
+
+[ext_resource type="Script" uid="uid://dp5rtwf776oty" path="res://cards/card_data.gd" id="1_de06a"]
+[ext_resource type="Texture2D" uid="uid://dprpkwwewtk4b" path="res://cards/capy/art/cappy-strike.jpg" id="1_lidx8"]
+
+[resource]
+script = ExtResource("1_de06a")
+card_name = "Strike"
+card_description = "You hit your target...but in a cute way."
+card_cost = 3
+card_value = 6
+card_art = ExtResource("1_lidx8")
+metadata/_custom_type_script = "uid://dp5rtwf776oty"

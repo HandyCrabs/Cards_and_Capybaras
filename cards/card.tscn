@@ -1,0 +1,99 @@
+[gd_scene format=3 uid="uid://dba1c31ybuag8"]
+
+[ext_resource type="Script" uid="uid://btu12wo3w8n3w" path="res://cards/card.gd" id="1_ixyhn"]
+[ext_resource type="Resource" uid="uid://1e3tugkgo216" path="res://cards/capy/shield.tres" id="2_032ga"]
+[ext_resource type="Script" uid="uid://d1esfsl5memwk" path="res://addons/TextureRectRounded/TextureRectRounded.gd" id="3_f61jr"]
+[ext_resource type="Theme" uid="uid://dk1pipygu1f2o" path="res://themes/test_theme.tres" id="4_ixyhn"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jsqqk"]
+corner_radius_top_left = 25
+corner_radius_top_right = 25
+corner_radius_bottom_right = 25
+corner_radius_bottom_left = 25
+corner_detail = 20
+anti_aliasing = false
+
+[sub_resource type="Gradient" id="Gradient_nov7x"]
+offsets = PackedFloat32Array(0, 0.7383177, 0.94859815, 1)
+colors = PackedColorArray(0.5007778, 0.6242168, 0.5021188, 1, 0.5007778, 0.6242168, 0.5021188, 1, 0.5007778, 0.6242168, 0.5021188, 1, 0.5007778, 0.6242168, 0.5021188, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_vip73"]
+gradient = SubResource("Gradient_nov7x")
+
+[sub_resource type="Gradient" id="Gradient_ihgm3"]
+colors = PackedColorArray(0, 0, 0, 0.24313726, 1, 1, 1, 0.39607844)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ndoen"]
+gradient = SubResource("Gradient_ihgm3")
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_4k7q8"]
+
+[node name="Card" type="Control" unique_id=274387413]
+custom_minimum_size = Vector2(260, 382)
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_ixyhn")
+card_data = ExtResource("2_032ga")
+
+[node name="Background" type="Panel" parent="." unique_id=948845047]
+clip_children = 1
+layout_mode = 0
+offset_right = 347.0
+offset_bottom = 488.0
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_jsqqk")
+script = ExtResource("3_f61jr")
+corner_detail = 25
+radius_bottom_left = 25
+radius_bottom_right = 25
+radius_top_left = 25
+radius_top_right = 25
+texture = SubResource("GradientTexture2D_vip73")
+metadata/_custom_type_script = "uid://d1esfsl5memwk"
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=96979283]
+layout_mode = 0
+offset_left = 18.0
+offset_top = 11.0
+offset_right = 327.0
+offset_bottom = 471.0
+texture = SubResource("GradientTexture2D_ndoen")
+
+[node name="Art" type="TextureRect" parent="." unique_id=1926485649]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 33.0
+offset_right = 217.0
+offset_bottom = 176.0
+mouse_filter = 2
+texture = SubResource("CompressedTexture2D_4k7q8")
+expand_mode = 1
+
+[node name="CardName" type="Label" parent="." unique_id=85269370]
+layout_mode = 0
+offset_left = 13.0
+offset_top = 8.0
+offset_right = 244.0
+offset_bottom = 35.0
+theme = ExtResource("4_ixyhn")
+text = "Test Card Name 1234567890"
+horizontal_alignment = 1
+
+[node name="Description" type="RichTextLabel" parent="." unique_id=1228075960]
+layout_mode = 0
+offset_left = 27.0
+offset_top = 195.0
+offset_right = 233.0
+offset_bottom = 334.0
+mouse_filter = 2
+theme = ExtResource("4_ixyhn")
+text = "This is a test text box that will be used to show the card details."
+
+[node name="CostContainer" type="HBoxContainer" parent="." unique_id=1024336419]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 319.0
+offset_right = 260.0
+offset_bottom = 381.0
+mouse_filter = 2
+alignment = 1

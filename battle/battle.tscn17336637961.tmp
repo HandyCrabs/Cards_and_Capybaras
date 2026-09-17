@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://dqn3q1x1ilgw5"]
+
+[ext_resource type="Script" uid="uid://bfv47tf8ldll" path="res://battle/battle.gd" id="1_6hnvb"]
+[ext_resource type="Script" uid="uid://dp5rtwf776oty" path="res://cards/card_data.gd" id="2_6hnvb"]
+[ext_resource type="Resource" uid="uid://1e3tugkgo216" path="res://cards/capy/shield.tres" id="3_l1kiu"]
+[ext_resource type="Resource" uid="uid://btcr46f00wf6i" path="res://cards/capy/strike.tres" id="4_7fucf"]
+[ext_resource type="PackedScene" uid="uid://bvjs15c8ijsm3" path="res://enemies/enemy.tscn" id="5_4mnim"]
+[ext_resource type="Resource" uid="uid://dpeubf8ol3a2a" path="res://enemies/rat/rat.tres" id="6_l1kiu"]
+
+[node name="Battle" type="Node2D" unique_id=183399050]
+script = ExtResource("1_6hnvb")
+starting_deck = Array[ExtResource("2_6hnvb")]([ExtResource("3_l1kiu"), ExtResource("3_l1kiu"), ExtResource("3_l1kiu"), ExtResource("3_l1kiu"), ExtResource("4_7fucf"), ExtResource("4_7fucf"), ExtResource("4_7fucf"), ExtResource("4_7fucf"), ExtResource("4_7fucf")])
+
+[node name="Button" type="Button" parent="." unique_id=665604764]
+offset_left = 14.0
+offset_top = 965.0
+offset_right = 104.0
+offset_bottom = 1051.0
+text = "Draw Card"
+
+[node name="HandContainer" type="Node2D" parent="." unique_id=8183639]
+position = Vector2(938, 844)
+
+[node name="Enemy" parent="." unique_id=1340538386 instance=ExtResource("5_4mnim")]
+offset_left = 1369.0
+offset_top = 344.0
+offset_right = 1569.0
+offset_bottom = 604.0
+data = ExtResource("6_l1kiu")
+
+[connection signal="button_down" from="Button" to="." method="draw_card"]

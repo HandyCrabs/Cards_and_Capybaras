@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="EnemyData" format=3 uid="uid://dpeubf8ol3a2a"]
+
+[ext_resource type="Texture2D" uid="uid://c5g7w1x1m2oef" path="res://enemies/rat/rat.png" id="1_aaf3t"]
+[ext_resource type="Script" uid="uid://cn28x70n3wu3c" path="res://enemies/enemy_data.gd" id="1_us0kx"]
+
+[resource]
+script = ExtResource("1_us0kx")
+enemy_name = "Rat"
+max_health = 48
+art = ExtResource("1_aaf3t")
+metadata/_custom_type_script = "uid://cn28x70n3wu3c"

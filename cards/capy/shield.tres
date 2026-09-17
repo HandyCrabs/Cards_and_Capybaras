@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="Card" format=3 uid="uid://1e3tugkgo216"]
+
+[ext_resource type="Texture2D" uid="uid://dcywn2i8r1gy4" path="res://cards/capy/art/cappy-shield.jpg" id="1_gru5d"]
+[ext_resource type="Script" uid="uid://dp5rtwf776oty" path="res://cards/card_data.gd" id="1_mn8ke"]
+
+[resource]
+script = ExtResource("1_mn8ke")
+card_type = 1
+card_name = "Shield"
+card_description = "Capybara butts are extremely thicc"
+card_cost = 1
+card_value = 5
+card_art = ExtResource("1_gru5d")
+metadata/_custom_type_script = "uid://dp5rtwf776oty"
