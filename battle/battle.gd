@@ -46,6 +46,9 @@ func _on_enemy_clicked(target: Enemy) -> void:
 	var card: CardData = selected_card.card_data
 	if card.card_type != CardData.CardType.ATTACK:
 		return
+	if not player.spend_energy(card.card_cost):
+		print("Not enough energy!")
+		return
 	target.take_damage(card.card_value)
 	_discard(selected_card)
 
@@ -55,8 +58,19 @@ func _on_player_clicked(target: Player) -> void:
 	var card: CardData = selected_card.card_data
 	if card.card_type != CardData.CardType.SKILL:
 		return
+	if not player.spend_energy(card.card_cost):
+		print("Not enough energy!")
+		return
 	target.gain_block(card.card_value)
 	_discard(selected_card)
+
+func _on_card_clicked(view: Control) -> void:
+	var was_selected := view == selected_card
+	if selected_card:
+		selected_card.set_selected(false)
+	selected_card = null if was_selected else view
+	if selected_card:
+		selected_card.set_selected(true)
 
 func _update_hand_layout() -> void:
 	var views := hand_container.get_children()
@@ -77,11 +91,3 @@ func _discard(view: Control) -> void:
 	view.queue_free()
 	_update_hand_layout()
 	print(discard.cards.map(func(c: CardData): return c.card_name))
-
-func _on_card_clicked(view: Control) -> void:
-	var was_selected := view == selected_card
-	if selected_card:
-		selected_card.set_selected(false)
-	selected_card = null if was_selected else view
-	if selected_card:
-		selected_card.set_selected(true)

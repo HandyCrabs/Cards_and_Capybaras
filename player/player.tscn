@@ -53,3 +53,11 @@ offset_right = 1023.0
 offset_bottom = 717.0
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_rkbax")
+
+[node name="EnergyLabel" type="Label" parent="." unique_id=705183314]
+layout_mode = 0
+offset_left = 265.0
+offset_top = 431.0
+offset_right = 492.33337
+offset_bottom = 504.3333
+label_settings = SubResource("LabelSettings_g1dw6")
