@@ -10,6 +10,7 @@ var selected_card: Control = null
 @onready var hand_container : Node2D = $HandContainer
 @onready var card_scene = load("res://cards/card.tscn")
 @onready var enemy : Enemy = $Enemy
+@onready var player : Player = $Player
 
 @export var starting_deck : Array[CardData]
 
@@ -21,6 +22,7 @@ func _ready() -> void:
 	deck.cards.assign(starting_deck)
 	deck.shuffle()
 	enemy.clicked.connect(_on_enemy_clicked)
+	player.clicked.connect(_on_player_clicked)
 
 func draw_card() -> void:
 	if hand.card_count() + 1 <= max_hand:		#accounting for index 0
@@ -45,6 +47,15 @@ func _on_enemy_clicked(target: Enemy) -> void:
 	if card.card_type != CardData.CardType.ATTACK:
 		return
 	target.take_damage(card.card_value)
+	_discard(selected_card)
+
+func _on_player_clicked(target: Player) -> void:
+	if selected_card == null:
+		return
+	var card: CardData = selected_card.card_data
+	if card.card_type != CardData.CardType.SKILL:
+		return
+	target.gain_block(card.card_value)
 	_discard(selected_card)
 
 func _update_hand_layout() -> void:

@@ -6,6 +6,7 @@
 [ext_resource type="Resource" uid="uid://btcr46f00wf6i" path="res://cards/capy/strike.tres" id="4_7fucf"]
 [ext_resource type="PackedScene" uid="uid://bvjs15c8ijsm3" path="res://enemies/enemy.tscn" id="5_4mnim"]
 [ext_resource type="Resource" uid="uid://dpeubf8ol3a2a" path="res://enemies/rat/rat.tres" id="6_l1kiu"]
+[ext_resource type="PackedScene" uid="uid://dkwmsbwoacbhf" path="res://player/player.tscn" id="7_7fucf"]
 
 [node name="Battle" type="Node2D" unique_id=183399050]
 script = ExtResource("1_6hnvb")
@@ -17,6 +18,11 @@ offset_top = 965.0
 offset_right = 104.0
 offset_bottom = 1051.0
 text = "Draw Card"
+
+[node name="Player" parent="." unique_id=514726724 instance=ExtResource("7_7fucf")]
+offset_top = 139.0
+offset_right = 5.0000305
+offset_bottom = 139.0
 
 [node name="HandContainer" type="Node2D" parent="." unique_id=8183639]
 position = Vector2(938, 844)

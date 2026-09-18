@@ -1,0 +1,55 @@
+[gd_scene format=3 uid="uid://dkwmsbwoacbhf"]
+
+[ext_resource type="Script" uid="uid://ndhruy64g1sw" path="res://player/player.gd" id="1_oul6g"]
+[ext_resource type="Texture2D" uid="uid://du8i5se1b7ypb" path="res://player/capy/capybara-2.png" id="2_rkbax"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_g1dw6"]
+font_size = 36
+
+[sub_resource type="LabelSettings" id="LabelSettings_rkbax"]
+font_size = 36
+
+[node name="Player" type="Control" unique_id=514726724]
+layout_mode = 3
+anchor_right = 0.44300002
+anchor_bottom = 0.563
+offset_left = 5.0
+offset_top = 5.0
+offset_right = 4.4399414
+offset_bottom = 76.95996
+mouse_filter = 1
+script = ExtResource("1_oul6g")
+
+[node name="HealthBar" type="ProgressBar" parent="." unique_id=340735140]
+layout_mode = 0
+offset_left = 131.0
+offset_top = 20.0
+offset_right = 655.0
+offset_bottom = 109.0
+mouse_filter = 2
+show_percentage = false
+
+[node name="HealthLabel" type="Label" parent="." unique_id=1951768022]
+layout_mode = 0
+offset_left = 276.0
+offset_top = 29.0
+offset_right = 503.33334
+offset_bottom = 102.33333
+label_settings = SubResource("LabelSettings_g1dw6")
+
+[node name="BlockLabel" type="Label" parent="." unique_id=1664527536]
+layout_mode = 0
+offset_left = 677.0
+offset_top = 18.0
+offset_right = 799.6666
+offset_bottom = 108.666664
+label_settings = SubResource("LabelSettings_rkbax")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1641799961]
+layout_mode = 0
+offset_left = 197.0
+offset_top = 124.0
+offset_right = 1023.0
+offset_bottom = 717.0
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_rkbax")

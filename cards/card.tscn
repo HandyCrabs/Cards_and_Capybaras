@@ -5,7 +5,7 @@
 [ext_resource type="Script" uid="uid://d1esfsl5memwk" path="res://addons/TextureRectRounded/TextureRectRounded.gd" id="3_f61jr"]
 [ext_resource type="Theme" uid="uid://dk1pipygu1f2o" path="res://themes/test_theme.tres" id="4_ixyhn"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jsqqk"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f61jr"]
 corner_radius_top_left = 25
 corner_radius_top_right = 25
 corner_radius_bottom_right = 25
@@ -32,6 +32,8 @@ gradient = SubResource("Gradient_ihgm3")
 custom_minimum_size = Vector2(260, 382)
 layout_mode = 3
 anchors_preset = 0
+offset_right = 341.0
+offset_bottom = 484.0
 script = ExtResource("1_ixyhn")
 card_data = ExtResource("2_032ga")
 
@@ -41,7 +43,7 @@ layout_mode = 0
 offset_right = 347.0
 offset_bottom = 488.0
 mouse_filter = 1
-theme_override_styles/panel = SubResource("StyleBoxFlat_jsqqk")
+theme_override_styles/panel = SubResource("StyleBoxFlat_f61jr")
 script = ExtResource("3_f61jr")
 corner_detail = 25
 radius_bottom_left = 25
