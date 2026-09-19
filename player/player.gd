@@ -35,8 +35,9 @@ func spend_energy(amount: int) -> bool:
 	if amount > energy:
 		return false
 	energy -= amount
-	return true
 	_update_display()
+	return true
+
 
 func refill_energy() -> void:
 	energy = max_energy

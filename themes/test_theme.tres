@@ -4,7 +4,7 @@
 
 [resource]
 Label/colors/font_color = Color(0.5584893, 0.46736532, 0.12709743, 1)
-Label/font_sizes/font_size = 28
+Label/font_sizes/font_size = 48
 Label/fonts/font = ExtResource("1_kv3xq")
 RichTextLabel/colors/default_color = Color(0.8938276, 0.0006805688, 0.90073335, 1)
 RichTextLabel/constants/line_separation = 5

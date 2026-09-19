@@ -22,3 +22,7 @@ func card_count() -> int:
 	var card_qty : int
 	card_qty = cards.size()
 	return card_qty
+
+func move_all_to(target: Pile) -> void:
+	target.cards.append_array(cards)
+	cards.clear()

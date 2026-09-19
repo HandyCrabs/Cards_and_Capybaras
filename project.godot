@@ -32,6 +32,17 @@ movie_writer/fps=30
 
 enabled=PackedStringArray("res://addons/TextureRectRounded/plugin.cfg")
 
+[file_customization]
+
+folder_colors={
+"res://addons/": "gray",
+"res://battle/": "orange",
+"res://cards/": "green",
+"res://enemies/": "red",
+"res://player/": "blue",
+"res://themes/": "purple"
+}
+
 [physics]
 
 3d/physics_engine="Jolt Physics"
@@ -39,3 +50,4 @@ enabled=PackedStringArray("res://addons/TextureRectRounded/plugin.cfg")
 [rendering]
 
 rendering_device/driver.windows="d3d12"
+anti_aliasing/quality/msaa_2d=2

@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://bsbpbjtqg5r4j" path="res://battle/Background.png" id="5_iorop"]
 [ext_resource type="Resource" uid="uid://dpeubf8ol3a2a" path="res://enemies/rat/rat.tres" id="6_l1kiu"]
 [ext_resource type="PackedScene" uid="uid://dkwmsbwoacbhf" path="res://player/player.tscn" id="7_7fucf"]
+[ext_resource type="Theme" uid="uid://dk1pipygu1f2o" path="res://themes/test_theme.tres" id="9_rxlun"]
 
 [node name="Battle" type="Node2D" unique_id=183399050]
 script = ExtResource("1_6hnvb")
@@ -29,6 +30,7 @@ text = "Draw Card"
 offset_top = 139.0
 offset_right = 5.0000305
 offset_bottom = 139.0
+max_energy = 20
 
 [node name="HandContainer" type="Node2D" parent="." unique_id=8183639]
 position = Vector2(938, 844)
@@ -39,5 +41,21 @@ offset_top = 344.0
 offset_right = 1569.0
 offset_bottom = 604.0
 data = ExtResource("6_l1kiu")
+
+[node name="DeckQtyLabel" type="Label" parent="." unique_id=1420589863]
+offset_left = 48.0
+offset_top = 18.0
+offset_right = 88.0
+offset_bottom = 41.0
+theme = ExtResource("9_rxlun")
+text = "Deck: "
+
+[node name="DiscardQtyLabel" type="Label" parent="." unique_id=386732121]
+offset_left = 356.0
+offset_top = 25.0
+offset_right = 396.0
+offset_bottom = 71.0
+theme = ExtResource("9_rxlun")
+text = "Discard:"
 
 [connection signal="button_down" from="Button" to="." method="draw_card"]

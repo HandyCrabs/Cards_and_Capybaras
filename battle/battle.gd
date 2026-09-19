@@ -1,16 +1,18 @@
 extends Node2D
 
-var deck := Pile.new()
+var draw_pile := Pile.new()
 var hand := Pile.new()
-var discard := Pile.new()
-var exhaust := Pile.new()
-var max_hand : int = 5
+var discard_pile := Pile.new()
+var exhaust_pile := Pile.new()
+var max_hand : int = 10
 var selected_card: Control = null
 
 @onready var hand_container : Node2D = $HandContainer
 @onready var card_scene = load("res://cards/card.tscn")
 @onready var enemy : Enemy = $Enemy
 @onready var player : Player = $Player
+@onready var deck_qty_label : Label = $DeckQtyLabel
+@onready var discard_qty_label : Label = $DiscardQtyLabel
 
 @export var starting_deck : Array[CardData]
 
@@ -19,26 +21,31 @@ const FAN_RADIUS := 1500.0     # bigger = flatter arc
 const FAN_SPREAD_DEG := 8.0    # degrees between adjacent cards
 
 func _ready() -> void:
-	deck.cards.assign(starting_deck)
-	deck.shuffle()
+	draw_pile.cards.assign(starting_deck)
+	draw_pile.shuffle()
 	enemy.clicked.connect(_on_enemy_clicked)
 	player.clicked.connect(_on_player_clicked)
+	_update_labels()
+	discard_pile.cards.clear()
 
 func draw_card() -> void:
-	if hand.card_count() + 1 <= max_hand:		#accounting for index 0
-		var card := deck.draw()
-		if card == null:
-			print("Deck is empty!")
-			return
-		hand.add_card(card)
-		var view :Control = card_scene.instantiate()
-		view.clicked.connect(_on_card_clicked)
-		view.card_data = card
-		hand_container.add_child(view)
-		_update_hand_layout()
-	else:
+	if hand.card_count() >= max_hand:
 		print("Your hand is full!")
 		return
+	var card := draw_pile.draw()
+	if card == null:
+		_reshuffle_discard_into_deck()
+		card = draw_pile.draw()
+	if card == null:
+		print("No cards left to draw!")
+		return
+	hand.add_card(card)
+	var view :Control = card_scene.instantiate()
+	view.clicked.connect(_on_card_clicked)
+	view.card_data = card
+	hand_container.add_child(view)
+	_update_hand_layout()
+	_update_labels()
 
 func _on_enemy_clicked(target: Enemy) -> void:
 	if selected_card == null:
@@ -63,6 +70,7 @@ func _on_player_clicked(target: Player) -> void:
 		return
 	target.gain_block(card.card_value)
 	_discard(selected_card)
+	_update_labels()
 
 func _on_card_clicked(view: Control) -> void:
 	var was_selected := view == selected_card
@@ -71,6 +79,7 @@ func _on_card_clicked(view: Control) -> void:
 	selected_card = null if was_selected else view
 	if selected_card:
 		selected_card.set_selected(true)
+		_update_labels()
 
 func _update_hand_layout() -> void:
 	var views := hand_container.get_children()
@@ -86,8 +95,23 @@ func _update_hand_layout() -> void:
 
 func _discard(view: Control) -> void:
 	hand.remove_card(view.card_data)
-	discard.add_card(view.card_data)
+	discard_pile.add_card(view.card_data)
 	hand_container.remove_child(view)
 	view.queue_free()
 	_update_hand_layout()
-	print(discard.cards.map(func(c: CardData): return c.card_name))
+	_print_decks()
+	_update_labels()
+	
+func _reshuffle_discard_into_deck() -> void:
+	discard_pile.move_all_to(draw_pile)
+	draw_pile.shuffle()
+	_update_labels()
+
+func _update_labels() -> void:
+	deck_qty_label.text = "draw_pile: " + str(draw_pile.cards.size())
+	discard_qty_label.text = "discard_pile: " + str(discard_pile.cards.size())
+	_print_decks()
+
+func _print_decks() -> void:
+	print("discard_pile: " + str(discard_pile.cards.map(func(c: CardData): return c.card_name)))
+	print("draw_pile: " + str(draw_pile.cards.map(func(c: CardData): return c.card_name)))
